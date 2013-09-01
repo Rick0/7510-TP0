@@ -4,13 +4,11 @@ package main.java;
 public class ListaEnlazada<Objeto> {
 
 	private NodoListaEnlazada<Objeto> primerNodo;
-//	private NodoListaEnlazada<Objeto> ultimoNodo;
 	private int tamanio;
 
 
 	public ListaEnlazada() {
 		primerNodo = null;
-//		ultimoNodo = null;
 		tamanio = 0;
 	}
 
