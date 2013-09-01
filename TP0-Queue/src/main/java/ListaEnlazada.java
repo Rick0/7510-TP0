@@ -3,8 +3,8 @@ package main.java;
 
 public class ListaEnlazada<Objeto> {
 
-	private NodoLista<Objeto> primerNodo;
-//	private NodoLista<Objeto> ultimoNodo;
+	private NodoListaEnlazada<Objeto> primerNodo;
+//	private NodoListaEnlazada<Objeto> ultimoNodo;
 	private int tamanio;
 
 
@@ -26,18 +26,17 @@ public class ListaEnlazada<Objeto> {
 
 
 	public void agregar(Objeto dato) {
-
-		NodoLista<Objeto> nodoNuevo = new NodoLista<Objeto>(dato);
+		NodoListaEnlazada<Objeto> nodoNuevo = new NodoListaEnlazada<Objeto>(dato);
 		
 		if (primerNodo == null) {
 			primerNodo = nodoNuevo;
 		}
 		else {
-			NodoLista<Objeto> nodoActual = primerNodo.devolverNodoSiguiente();
-			NodoLista<Objeto> nodoAnterior = primerNodo;
+			NodoListaEnlazada<Objeto> nodoActual = primerNodo.devolverNodoSiguiente();
+			NodoListaEnlazada<Objeto> nodoAnterior = primerNodo;
 			
 			while ( nodoActual != null ) {
-				NodoLista<Objeto> nodoSiguiente = nodoActual.devolverNodoSiguiente();
+				NodoListaEnlazada<Objeto> nodoSiguiente = nodoActual.devolverNodoSiguiente();
 				nodoAnterior = nodoActual;
 				nodoActual = nodoSiguiente;
 			}
@@ -51,7 +50,7 @@ public class ListaEnlazada<Objeto> {
 
 	public void borrarPrimerElemento() {
 		if (primerNodo != null) {
-			NodoLista<Objeto> nodoSiguiente = primerNodo.devolverNodoSiguiente();
+			NodoListaEnlazada<Objeto> nodoSiguiente = primerNodo.devolverNodoSiguiente();
 			primerNodo = nodoSiguiente;
 			tamanio--;
 		}
@@ -63,7 +62,7 @@ public class ListaEnlazada<Objeto> {
 	}	
 
 
-	public NodoLista<Objeto> devolverPrimerNodo() {
+	public NodoListaEnlazada<Objeto> devolverPrimerNodo() {
 		return primerNodo;
 	}
 

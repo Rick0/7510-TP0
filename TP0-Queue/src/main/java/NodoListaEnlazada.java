@@ -1,13 +1,13 @@
 package main.java;
 
 
-public class NodoLista<Objeto> {
+public class NodoListaEnlazada<Objeto> {
 
 	private Objeto dato;
-	private NodoLista<Objeto> nodoSiguiente;
+	private NodoListaEnlazada<Objeto> nodoSiguiente;
 
 
-	public NodoLista(Objeto objeto) {
+	public NodoListaEnlazada(Objeto objeto) {
 		dato = objeto;
 		nodoSiguiente = null;
 	}
@@ -23,12 +23,12 @@ public class NodoLista<Objeto> {
 	}
 
 
-	public void cambiarNodoSiguiente(NodoLista<Objeto> nodo) {
+	public void cambiarNodoSiguiente(NodoListaEnlazada<Objeto> nodo) {
 		nodoSiguiente = nodo;
 	}
 
 
-	public NodoLista<Objeto> devolverNodoSiguiente() {
+	public NodoListaEnlazada<Objeto> devolverNodoSiguiente() {
 		return nodoSiguiente;
 	}
 
