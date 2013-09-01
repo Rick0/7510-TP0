@@ -8,33 +8,33 @@ public class NodoListaEnlazada<Objeto> {
 
 
 	public NodoListaEnlazada(Objeto objeto) {
-		dato = objeto;
-		nodoSiguiente = null;
+		this.dato = objeto;
+		this.nodoSiguiente = null;
 	}
 
 
 	public void cambiarDato(Objeto objeto) {
-		dato = objeto;
+		this.dato = objeto;
 	}
 
 	
 	public Objeto devolverDato() {
-		return dato;
+		return this.dato;
 	}
 
 
 	public void cambiarNodoSiguiente(NodoListaEnlazada<Objeto> nodo) {
-		nodoSiguiente = nodo;
+		this.nodoSiguiente = nodo;
 	}
 
 
 	public NodoListaEnlazada<Objeto> devolverNodoSiguiente() {
-		return nodoSiguiente;
+		return this.nodoSiguiente;
 	}
 
 
 	public boolean tieneSiguiente() {
-		return (nodoSiguiente != null);
+		return (this.nodoSiguiente != null);
 	}
 
 }

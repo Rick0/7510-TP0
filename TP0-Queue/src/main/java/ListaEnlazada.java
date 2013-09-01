@@ -8,30 +8,45 @@ public class ListaEnlazada<Objeto> {
 
 
 	public ListaEnlazada() {
-		primerNodo = null;
-		tamanio = 0;
+		this.primerNodo = null;
+		this.tamanio = 0;
 	}
 
 
 	public boolean estaVacia() {
-		return (tamanio == 0);
+		return (this.tamanio == 0);
 	}
 
 
 	public int devolverTamanio() {
-		return tamanio;
+		return this.tamanio;
 	}
 
 
-	public void agregar(Objeto dato) {
+	public void agregarAlPrincipio(Objeto dato) {
 		NodoListaEnlazada<Objeto> nodoNuevo = new NodoListaEnlazada<Objeto>(dato);
-		
-		if (primerNodo == null) {
-			primerNodo = nodoNuevo;
+
+		if (this.primerNodo == null) {
+			this.primerNodo = nodoNuevo;
 		}
 		else {
-			NodoListaEnlazada<Objeto> nodoActual = primerNodo.devolverNodoSiguiente();
-			NodoListaEnlazada<Objeto> nodoAnterior = primerNodo;
+			nodoNuevo.cambiarNodoSiguiente(this.primerNodo);
+			this.primerNodo = nodoNuevo;
+		}
+		
+		this.tamanio++;
+	}
+
+
+	public void agregarAlFinal(Objeto dato) {
+		NodoListaEnlazada<Objeto> nodoNuevo = new NodoListaEnlazada<Objeto>(dato);
+
+		if (this.primerNodo == null) {
+			this.primerNodo = nodoNuevo;
+		}
+		else {
+			NodoListaEnlazada<Objeto> nodoActual = this.primerNodo.devolverNodoSiguiente();
+			NodoListaEnlazada<Objeto> nodoAnterior = this.primerNodo;
 			
 			while ( nodoActual != null ) {
 				NodoListaEnlazada<Objeto> nodoSiguiente = nodoActual.devolverNodoSiguiente();
@@ -42,26 +57,26 @@ public class ListaEnlazada<Objeto> {
 			nodoAnterior.cambiarNodoSiguiente( nodoNuevo );
 		}
 		
-		tamanio++;
+		this.tamanio++;
 	}
 
 
 	public void borrarPrimerElemento() {
-		if (primerNodo != null) {
-			NodoListaEnlazada<Objeto> nodoSiguiente = primerNodo.devolverNodoSiguiente();
-			primerNodo = nodoSiguiente;
-			tamanio--;
+		if (this.primerNodo != null) {
+			NodoListaEnlazada<Objeto> nodoSiguiente = this.primerNodo.devolverNodoSiguiente();
+			this.primerNodo = nodoSiguiente;
+			this.tamanio--;
 		}
 	}
 
 
 	public Objeto devolverPrimerElemento() {
-		return primerNodo.devolverDato();
+		return this.primerNodo.devolverDato();
 	}	
 
 
 	public NodoListaEnlazada<Objeto> devolverPrimerNodo() {
-		return primerNodo;
+		return this.primerNodo;
 	}
 
 }

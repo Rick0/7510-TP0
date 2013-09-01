@@ -22,7 +22,7 @@ public class Cola implements Queue {
 
 
 	public void add(Object item) {
-		this.lista.agregar(item);
+		this.lista.agregarAlFinal(item);
 	}
 
 

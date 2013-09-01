@@ -38,18 +38,18 @@ public class ListaEnlazadaTest {
 
 	@Test
 	public void testAgregarUnElemento() {
-		lista.agregar(elemento1);
+		lista.agregarAlFinal(elemento1);
 		Assert.assertEquals(lista.devolverPrimerElemento() , elemento1);
 	}
 	
 	
 	@Test
 	public void testAgregarVariosElementos() {
-		lista.agregar(elemento1);
-		lista.agregar(elemento2);
-		lista.agregar(elemento3);
-		lista.agregar(elemento4);
-		lista.agregar(elemento5);
+		lista.agregarAlFinal(elemento1);
+		lista.agregarAlFinal(elemento2);
+		lista.agregarAlFinal(elemento3);
+		lista.agregarAlFinal(elemento4);
+		lista.agregarAlFinal(elemento5);
 
 		Assert.assertEquals(lista.devolverTamanio() , 5);
 	}
@@ -57,7 +57,7 @@ public class ListaEnlazadaTest {
 
 	@Test
 	public void testBorrarUnElemento() {
-		lista.agregar(elemento1);
+		lista.agregarAlFinal(elemento1);
 		lista.borrarPrimerElemento();
 
 		Assert.assertEquals(lista.devolverTamanio() , 0);
@@ -66,11 +66,11 @@ public class ListaEnlazadaTest {
 
 	@Test
 	public void testBorrarVariosElementos() {
-		lista.agregar(elemento1);
-		lista.agregar(elemento2);
-		lista.agregar(elemento3);
-		lista.agregar(elemento4);
-		lista.agregar(elemento5);
+		lista.agregarAlFinal(elemento1);
+		lista.agregarAlFinal(elemento2);
+		lista.agregarAlFinal(elemento3);
+		lista.agregarAlFinal(elemento4);
+		lista.agregarAlFinal(elemento5);
 		lista.borrarPrimerElemento();
 
 		Assert.assertEquals(lista.devolverTamanio() , 4);
@@ -88,7 +88,7 @@ public class ListaEnlazadaTest {
 	public void testEstaVacia() {
 		Assert.assertEquals(lista.estaVacia() , true);
 
-		lista.agregar(elemento1);
+		lista.agregarAlFinal(elemento1);
 
 		Assert.assertEquals(lista.estaVacia() , false);
 
