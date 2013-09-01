@@ -1,5 +1,7 @@
 package main.java;
 
+import java.lang.AssertionError;
+
 
 public class Cola implements Queue {
 
@@ -26,12 +28,12 @@ public class Cola implements Queue {
 	}
 
 
-	public Object top() {
+	public Object top() throws AssertionError {
 		return this.lista.devolverPrimerElemento();
 	}
 
 
-	public void remove() {
+	public void remove() throws AssertionError {
 		this.lista.borrarPrimerElemento();
 	}
 

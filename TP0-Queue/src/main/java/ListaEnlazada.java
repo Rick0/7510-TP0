@@ -1,5 +1,7 @@
 package main.java;
 
+import java.lang.AssertionError;
+
 
 public class ListaEnlazada<Objeto> {
 
@@ -61,16 +63,18 @@ public class ListaEnlazada<Objeto> {
 	}
 
 
-	public void borrarPrimerElemento() {
-		if (this.primerNodo != null) {
-			NodoListaEnlazada<Objeto> nodoSiguiente = this.primerNodo.devolverNodoSiguiente();
-			this.primerNodo = nodoSiguiente;
-			this.tamanio--;
-		}
+	public void borrarPrimerElemento() throws AssertionError {
+		if (this.primerNodo == null)
+			throw new AssertionError("No hay elementos");
+		NodoListaEnlazada<Objeto> nodoSiguiente = this.primerNodo.devolverNodoSiguiente();
+		this.primerNodo = nodoSiguiente;
+		this.tamanio--;
 	}
 
 
-	public Objeto devolverPrimerElemento() {
+	public Objeto devolverPrimerElemento() throws AssertionError {
+		if (this.primerNodo == null)
+			throw new AssertionError("No hay elementos");
 		return this.primerNodo.devolverDato();
 	}	
 

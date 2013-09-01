@@ -46,9 +46,9 @@ public class ListaEnlazadaTest {
 	@Test
 	public void testAgregarVariosElementos() {
 		lista.agregarAlFinal(elemento1);
-		lista.agregarAlFinal(elemento2);
+		lista.agregarAlPrincipio(elemento2);
 		lista.agregarAlFinal(elemento3);
-		lista.agregarAlFinal(elemento4);
+		lista.agregarAlPrincipio(elemento4);
 		lista.agregarAlFinal(elemento5);
 
 		Assert.assertEquals(lista.devolverTamanio() , 5);
@@ -65,7 +65,7 @@ public class ListaEnlazadaTest {
 
 
 	@Test
-	public void testBorrarVariosElementos() {
+	public void testBorrarVariosElementosOrdenAscendente() {
 		lista.agregarAlFinal(elemento1);
 		lista.agregarAlFinal(elemento2);
 		lista.agregarAlFinal(elemento3);
@@ -85,6 +85,27 @@ public class ListaEnlazadaTest {
 
 
 	@Test
+	public void testBorrarVariosElementosOrdenDescendente() {
+		lista.agregarAlPrincipio(elemento1);
+		lista.agregarAlPrincipio(elemento2);
+		lista.agregarAlPrincipio(elemento3);
+		lista.agregarAlPrincipio(elemento4);
+		lista.agregarAlPrincipio(elemento5);
+		lista.borrarPrimerElemento();
+
+		Assert.assertEquals(lista.devolverTamanio() , 4);
+		Assert.assertEquals(lista.devolverPrimerElemento() , elemento4);
+
+		lista.borrarPrimerElemento();
+		lista.borrarPrimerElemento();
+		lista.borrarPrimerElemento();
+
+		Assert.assertEquals(lista.devolverTamanio() , 1);
+		Assert.assertEquals(lista.devolverPrimerElemento() , elemento1);
+	}
+
+
+	@Test
 	public void testEstaVacia() {
 		Assert.assertEquals(lista.estaVacia() , true);
 
@@ -95,6 +116,39 @@ public class ListaEnlazadaTest {
 		lista.borrarPrimerElemento();
 
 		Assert.assertEquals(lista.estaVacia() , true);
+	}
+
+
+	@Test
+	public void testBorrarUnElementoCuandoNoHay() {
+		lista.agregarAlFinal(elemento1);
+		lista.borrarPrimerElemento();
+		
+		try {
+			lista.borrarPrimerElemento();
+		}
+		catch (AssertionError error) {
+			System.out.println("-- No hay elementos en la lista para borrar --");
+		}
+
+		Assert.assertEquals(lista.devolverTamanio() , 0);
+	}
+
+
+	@Test
+	public void testPedirUnElementoCuandoNoHay() {
+		lista.agregarAlFinal(elemento1);
+		lista.borrarPrimerElemento();
+		
+		Integer numero;
+		try {
+			numero = lista.devolverPrimerElemento();
+		}
+		catch (AssertionError error) {
+			System.out.println("-- No hay elementos en la lista para devolver --");
+		}
+
+		Assert.assertEquals(lista.devolverTamanio() , 0);
 	}
 
 }

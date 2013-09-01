@@ -97,4 +97,37 @@ public class ColaTest {
 		Assert.assertEquals(cola.isEmpty() , true);
 	}
 
+
+	@Test
+	public void testBorrarUnElementoCuandoNoHay() {
+		cola.add(elemento1);
+		cola.remove();
+
+		try {
+			cola.remove();
+		}
+		catch (AssertionError error) {
+			System.out.println("-- No hay elementos en la cola para borrar --");
+		}
+
+		Assert.assertEquals(cola.size() , 0);
+	}
+
+
+	@Test
+	public void testMostrarUnElementoCuandoNoHay() {
+		cola.add(elemento1);
+		cola.remove();
+
+		Integer unNumero;
+		try {
+			unNumero = (Integer)cola.top();
+		}
+		catch (AssertionError error) {
+			System.out.println("-- No hay elementos en la cola para mostrar --");
+		}
+
+		Assert.assertEquals(cola.size() , 0);
+	}
+
 }
