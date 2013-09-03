@@ -3,84 +3,53 @@ package main.java;
 import java.lang.AssertionError;
 
 
-public class ListaEnlazada<Objeto> {
+public class ListaEnlazada<Tipo_E> {
 
-	private NodoListaEnlazada<Objeto> primerNodo;
-	private int tamanio;
+	private NodoListaEnlazada<Tipo_E> primerNodo;
 
 
 	public ListaEnlazada() {
 		this.primerNodo = null;
-		this.tamanio = 0;
 	}
 
 
 	public boolean estaVacia() {
-		return (this.tamanio == 0);
+		return (this.devolverTamanio() == 0);
 	}
 
 
 	public int devolverTamanio() {
-		return this.tamanio;
+		return this.devolverTamanio(0, this.primerNodo);
 	}
 
 
-	public void agregarAlPrincipio(Objeto dato) {
-		NodoListaEnlazada<Objeto> nodoNuevo = new NodoListaEnlazada<Objeto>(dato);
-
-		if (this.primerNodo == null) {
-			this.primerNodo = nodoNuevo;
-		}
-		else {
-			nodoNuevo.cambiarNodoSiguiente(this.primerNodo);
-			this.primerNodo = nodoNuevo;
-		}
-		
-		this.tamanio++;
+	private int devolverTamanio(int tamanio, NodoListaEnlazada<Tipo_E> unNodo) {
+		try { return this.devolverTamanio(tamanio+1, unNodo.devolverNodoSiguiente()); } catch (Exception e) { return tamanio; }
 	}
 
 
-	public void agregarAlFinal(Objeto dato) {
-		NodoListaEnlazada<Objeto> nodoNuevo = new NodoListaEnlazada<Objeto>(dato);
+	public void agregarAlFinal(Tipo_E dato) {
+		this.agregarAlFinal( new NodoListaEnlazada<Tipo_E>(dato) );
+	}
 
-		if (this.primerNodo == null) {
-			this.primerNodo = nodoNuevo;
-		}
-		else {
-			NodoListaEnlazada<Objeto> nodoActual = this.primerNodo.devolverNodoSiguiente();
-			NodoListaEnlazada<Objeto> nodoAnterior = this.primerNodo;
-			
-			while ( nodoActual != null ) {
-				NodoListaEnlazada<Objeto> nodoSiguiente = nodoActual.devolverNodoSiguiente();
-				nodoAnterior = nodoActual;
-				nodoActual = nodoSiguiente;
-			}
-			
-			nodoAnterior.cambiarNodoSiguiente( nodoNuevo );
-		}
-		
-		this.tamanio++;
+
+	private void agregarAlFinal(NodoListaEnlazada<Tipo_E> nodoNuevo ) {
+		try {this.agregarAlFinal(nodoNuevo,this.primerNodo,this.primerNodo.devolverNodoSiguiente());} catch (Exception e) {this.primerNodo = nodoNuevo;}
+	}
+
+
+	private void agregarAlFinal(NodoListaEnlazada<Tipo_E> nodoNuevo, NodoListaEnlazada<Tipo_E> nodoAnterior, NodoListaEnlazada<Tipo_E> nodoActual) {
+		try {this.agregarAlFinal(nodoNuevo,nodoActual,nodoActual.devolverNodoSiguiente());} catch (Exception e) {nodoAnterior.cambiarNodoSiguiente(nodoNuevo);}
 	}
 
 
 	public void borrarPrimerElemento() throws AssertionError {
-		if (this.primerNodo == null)
-			throw new AssertionError("No hay elementos");
-		NodoListaEnlazada<Objeto> nodoSiguiente = this.primerNodo.devolverNodoSiguiente();
-		this.primerNodo = nodoSiguiente;
-		this.tamanio--;
+		try { this.primerNodo = this.primerNodo.devolverNodoSiguiente(); } catch (Exception e) { throw new AssertionError("No hay elementos"); }
 	}
 
 
-	public Objeto devolverPrimerElemento() throws AssertionError {
-		if (this.primerNodo == null)
-			throw new AssertionError("No hay elementos");
-		return this.primerNodo.devolverDato();
-	}	
-
-
-	public NodoListaEnlazada<Objeto> devolverPrimerNodo() {
-		return this.primerNodo;
+	public Tipo_E devolverPrimerElemento() throws AssertionError {
+		try { return this.primerNodo.devolverDato(); } catch (Exception e) { throw new AssertionError("No hay elementos"); }
 	}
 
 }

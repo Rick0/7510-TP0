@@ -1,34 +1,33 @@
 package main.java;
 
 
-public class NodoListaEnlazada<Objeto> {
+public class NodoListaEnlazada<Tipo_E> {
 
-	private Objeto dato;
-	private NodoListaEnlazada<Objeto> nodoSiguiente;
+	private Tipo_E dato;
+	private NodoListaEnlazada<Tipo_E> nodoSiguiente = null;
 
 
-	public NodoListaEnlazada(Objeto objeto) {
-		this.dato = objeto;
-		this.nodoSiguiente = null;
+	public NodoListaEnlazada(Tipo_E contenido) {
+		this.dato = contenido;
 	}
 
 
-	public void cambiarDato(Objeto objeto) {
-		this.dato = objeto;
+	public void cambiarDato(Tipo_E contenido) {
+		this.dato = contenido;
 	}
 
-	
-	public Objeto devolverDato() {
+
+	public Tipo_E devolverDato() {
 		return this.dato;
 	}
 
 
-	public void cambiarNodoSiguiente(NodoListaEnlazada<Objeto> nodo) {
+	public void cambiarNodoSiguiente(NodoListaEnlazada<Tipo_E> nodo) {
 		this.nodoSiguiente = nodo;
 	}
 
 
-	public NodoListaEnlazada<Objeto> devolverNodoSiguiente() {
+	public NodoListaEnlazada<Tipo_E> devolverNodoSiguiente() {
 		return this.nodoSiguiente;
 	}
 
